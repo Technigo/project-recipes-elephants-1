@@ -22,7 +22,7 @@ body {
     border-radius: 15px;
     display: flex;
     flex-direction: column;
-
+    box-shadow: 0 0 3px rgb(255, 248, 224);
 }
 
 .recipe-image {
@@ -33,14 +33,30 @@ body {
 
 .recipe-card h2 {
     font-size: 18px;
-    margin: 15px;
 }
 
-.cooking-time-image {
-    width: 60px;
-    align-self: flex-end;
+.card-middle {
+    padding: 15px;
 }
 
-.recipe-card p {
-    margin: 15px;
+.card-middle h2 {
+    margin: 0 0 5px;
+}
+
+.card-middle p {
+    margin: 0;
+}
+
+.card-middle a {
+    text-decoration: none;
+    color: black;
+}
+
+.card-middle a:hover {
+    text-decoration: underline;
+}
+
+.card-bottom {
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+    padding: 15px;
 }

@@ -137,26 +137,18 @@ const printToHTML = (data) => {
     recipeContainer.innerHTML = "";
     //   for (let i = 0; i < 3; i++) {
     recipeContainer.innerHTML += `
-  <section class="recipe-card">
-  <img class="recipe-image" src="${data.hits[0].recipe.image}"/>
-  <h2>Recipe: ${data.hits[0].recipe.label}</h2>
-  <img id="cooking-time-image" class="cooking-time-image" src="./assets/60.png">
-  <p>Source: <a href="${data.hits[0].recipe.url}">${data.hits[0].recipe.source}</a></p>
-  </section>
-  `;
-    // for (let image of cookingTimeImages) {
-    //     if (data.hits[0].recipe.totalTime <= 15) {
-    //         image.src = "./assets/15.png"
-    //     } else if (data.hits[0].recipe.totalTime <= 30) {
-    //         image.src = "./assets/30.png"
-    //     } else if (data.hits[0].recipe.totalTime <= 45) {
-    //         image.src = "./assets/45.png"
-    //     } else if (data.hits[0].recipe.totalTime <= 60) {
-    //         image.src = "./assets/60.png"
-    //     } else {
-    //         image.src = "./assets/60.png"
-    //     }
-    // }
+    <section class="recipe-card">
+        <img class="recipe-image" src="${data.hits[0].recipe.image}"/>
+        <div class="card-middle">
+            <h2>${data.hits[0].recipe.label}</h2>
+            <p>Get the full recipe at <a href="${data.hits[0].recipe.url}">${data.hits[0].recipe.source}</a></p>
+        </div>
+        <div class="card-bottom">
+            <span>${data.hits[0].recipe.totalTime} min · </span>
+            <span>${Math.round(data.hits[0].recipe.calories)} kcal</span>
+        </div>
+    </section>
+    `;
 };
 
 // getRecipe("cheese")
