@@ -137,9 +137,9 @@ const printToHTML = (data) => {
 //   for (let i = 0; i < 3; i++) {
     recipeContainer.innerHTML += `
   <section class="recipe-card">
-  <h2>Recipe: ${data.hits[0].recipe.label}</h2>
-  <p>Cooking time: ${data.hits[0].recipe.totalTime} minutes</p>
   <img class="recipe-image" src="${data.hits[0].recipe.image}"/>
+  <h2>Recipe: ${data.hits[0].recipe.label}</h2>
+  <span>Cooking time: ${data.hits[0].recipe.totalTime} minutes</span>
   <p>Source: <a href="${data.hits[0].recipe.url}">${data.hits[0].recipe.source}</a></p>
   </section>
   `;
@@ -148,3 +148,47 @@ const printToHTML = (data) => {
 
 // getRecipe("cheese")
 printToHTML(fakeAPIData)
+
+let maxCookingTime
+
+const filterTime = (userInput) => {
+  
+  if (userInput === "30") {
+    maxCookingTime = 30
+  }
+    //   let filteredRecipes = data.hits.filter((item) => item[data.hits[0].recipe.totalTime] < 100 )
+    //   console.log(filteredRecipes)
+ else if (userInput === "60") {
+    maxCookingTime = 60
+  } else if (userInput === "120") {
+    maxCookingTime = 120
+  } else {
+    maxCookingTime = 600
+  }
+}
+
+const timeFilter = document.querySelector("#filter")
+timeFilter.addEventListener("change", () => {
+    let userInput = timeFilter.value
+    filterTime(userInput)
+})
+
+filterTime(fakeAPIData)
+
+const inputForm = document.getElementById("input-form")
+const ingredientInput = document.getElementById("ingredient-input")
+const handleInputForm = () => {
+  event.preventDefault()
+  const input = ingredientInput.value
+  ingredientInput.value = ""
+  console.log(input)
+}
+inputForm.addEventListener("submit", handleInputForm)
+
+const recipesFiltered = (maxCookingTime) => {
+if (maxCookingTime) {
+    filteredRecipes = filteredRecipes.filter((item) => item[data.hits[0].recipe.label] === input)
+  } else {
+    filteredRecipes = filteredRecipes.filter((item) => item[data.hits[0].recipe.label] !== input)
+  }
+}
