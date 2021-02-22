@@ -1,9 +1,10 @@
 const recipeContainer = document.querySelector("#recipe-container");
+const cookingTimeImages = document.querySelectorAll(".cooking-time-image")
 
 const appKey = "55aba1e8a782e8fc409adb387c9c82ae";
 const appId = "1f3b28dd";
 
-const fakeAPIData = 
+const fakeAPIData =
 {
     "q": "cheese",
     "from": 0,
@@ -133,17 +134,29 @@ const fakeAPIData =
 // };
 
 const printToHTML = (data) => {
-  recipeContainer.innerHTML = "";
-//   for (let i = 0; i < 3; i++) {
+    recipeContainer.innerHTML = "";
+    //   for (let i = 0; i < 3; i++) {
     recipeContainer.innerHTML += `
   <section class="recipe-card">
-  <h2>Recipe: ${data.hits[0].recipe.label}</h2>
-  <p>Cooking time: ${data.hits[0].recipe.totalTime} minutes</p>
   <img class="recipe-image" src="${data.hits[0].recipe.image}"/>
+  <h2>Recipe: ${data.hits[0].recipe.label}</h2>
+  <img id="cooking-time-image" class="cooking-time-image" src="./assets/60.png">
   <p>Source: <a href="${data.hits[0].recipe.url}">${data.hits[0].recipe.source}</a></p>
   </section>
   `;
-//   }
+    // for (let image of cookingTimeImages) {
+    //     if (data.hits[0].recipe.totalTime <= 15) {
+    //         image.src = "./assets/15.png"
+    //     } else if (data.hits[0].recipe.totalTime <= 30) {
+    //         image.src = "./assets/30.png"
+    //     } else if (data.hits[0].recipe.totalTime <= 45) {
+    //         image.src = "./assets/45.png"
+    //     } else if (data.hits[0].recipe.totalTime <= 60) {
+    //         image.src = "./assets/60.png"
+    //     } else {
+    //         image.src = "./assets/60.png"
+    //     }
+    // }
 };
 
 // getRecipe("cheese")

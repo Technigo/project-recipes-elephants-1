@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.recipe-container {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.recipe-card {
+    width: 30%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.recipe-image {
+    width: 100%;
+    border-top-right-radius: 15px; 
+    border-top-left-radius: 15px; 
+}
+
+.recipe-card h2 {
+    font-size: 18px;
+    margin: 15px;
+}
+
+.cooking-time-image {
+    width: 60px;
+    align-self: flex-end;
+}
+
+.recipe-card p {
+    margin: 15px;
+}
