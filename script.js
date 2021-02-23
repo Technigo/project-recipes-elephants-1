@@ -122,54 +122,52 @@ const fakeAPIData =
     ]
 }
 
-// const getRecipe = (ingredient) => {
-//   fetch(
-//     `https://api.edamam.com/search?q=${ingredient}&app_id=${appId}&app_key=${appKey}&from=0&to=3&calories=591-722&health=alcohol-free`
-//   )
-//     .then((res) => res.json())
-//     .then((data) => {
-//       printToHTML(data);
-//     });
-// };
+const getRecipe = (ingredient, range) => {
+  fetch(
+    `https://api.edamam.com/search?q=${ingredient}&app_id=${appId}&app_key=${appKey}&from=0&to=3&calories=591-722&health=alcohol-free&time=${range}`
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      printToHTML(data);
+    });
+};
 
 const printToHTML = (data) => {
     recipeContainer.innerHTML = "";
-    //   for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < 3; i++) {
     recipeContainer.innerHTML += `
-
     <section class="recipe-card">
-        <img class="recipe-image" src="${data.hits[0].recipe.image}"/>
+        <img class="recipe-image" src="${data.hits[i].recipe.image}"/>
         <div class="card-middle">
-            <h2>${data.hits[0].recipe.label}</h2>
-            <p>Get the full recipe at <a href="${data.hits[0].recipe.url}">${data.hits[0].recipe.source}</a></p>
+            <h2>${data.hits[i].recipe.label}</h2>
+            <p>Get the full recipe at <a href="${data.hits[i].recipe.url}">${data.hits[i].recipe.source}</a></p>
         </div>
         <div class="card-bottom">
-            <span>${data.hits[0].recipe.totalTime} min · </span>
-            <span>${Math.round(data.hits[0].recipe.calories)} kcal</span>
+            <span>${data.hits[i].recipe.totalTime} min · </span>
+            <span>${Math.round(data.hits[i].recipe.calories)} kcal</span>
         </div>
     </section>
     `;
-    //   }
+      }
 };
 
 // getRecipe("cheese")
-printToHTML(fakeAPIData)
 
 let maxCookingTime
 
 const filterTime = (userInput) => {
   
   if (userInput === "30") {
-    maxCookingTime = 30
+    maxCookingTime = "0-30"
   }
     //   let filteredRecipes = data.hits.filter((item) => item[data.hits[0].recipe.totalTime] < 100 )
     //   console.log(filteredRecipes)
  else if (userInput === "60") {
-    maxCookingTime = 60
+    maxCookingTime = "0-60"
   } else if (userInput === "120") {
-    maxCookingTime = 120
+    maxCookingTime = "0-120"
   } else {
-    maxCookingTime = 600
+    maxCookingTime = "1%2B"
   }
 }
 
@@ -188,13 +186,6 @@ const handleInputForm = () => {
   const input = ingredientInput.value
   ingredientInput.value = ""
   console.log(input)
+  getRecipe(input, maxCookingTime)
 }
 inputForm.addEventListener("submit", handleInputForm)
-
-const recipesFiltered = (maxCookingTime) => {
-if (maxCookingTime) {
-    filteredRecipes = filteredRecipes.filter((item) => item[data.hits[0].recipe.label] === input)
-  } else {
-    filteredRecipes = filteredRecipes.filter((item) => item[data.hits[0].recipe.label] !== input)
-  }
-}
