@@ -14,6 +14,9 @@
     <form id="input-form">
       <div class="search-field"><img class="search-icon" src="./assets/search.svg" alt=""><input id="ingredient-input"
           type="text" placeholder="Search" /></div>
+
+        <button id="filter-button" class="filter-button">Advanced search</button>
+        <section id="filter-content" class="filter-content accordion-selected">
       <select id="filter" class="filter">
         <option value="" disabled selected>Max cooking time</option>
         <option value="30">less than 30 min</option>
@@ -21,7 +24,6 @@
         <option value="120">less than 120 min</option>
         <option value="any">any</option>
       </select>
-      <button class="send-button" type="submit">Get Recipe</button>
     </form>
     
     <div id="checkbox" class=checkbox>
@@ -55,7 +57,9 @@
         Nuts
       </label>
     </div>
+  </section>
 </section>
+<button class="send-button" type="submit">Get Recipe</button>
   <section id="header-container" class="header-container">
     <h1>Fantastic recipes</h1>
   </section>

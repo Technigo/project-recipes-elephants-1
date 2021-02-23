@@ -6,6 +6,8 @@ const appId = "1f3b28dd";
 const inputForm = document.getElementById("input-form")
 const ingredientInput = document.getElementById("ingredient-input")
 const checkboxInput = document.querySelectorAll(".checkbox-input")
+const filterButton = document.getElementById("filter-button")
+const filterContent = document.getElementById("filter-content")
 
 const fakeAPIData =
 {
@@ -198,3 +200,7 @@ checkbox.addEventListener('change', function() {
 inputForm.addEventListener("submit", handleInputForm)
 
 let excludeIngredients = ""
+
+filterButton.addEventListener("click", () => {
+  filterContent.classList.toggle("accordion-selected")
+})

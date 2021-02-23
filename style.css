@@ -61,6 +61,16 @@ select:hover {
     background-color: #009de0;
 }
 
+.filter-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.accordion-selected {
+    display: none;
+}
+
 .recipe-container {
     width: 80%;
     display: flex;
