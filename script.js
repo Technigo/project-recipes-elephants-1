@@ -3,7 +3,7 @@ const recipeContainer = document.querySelector("#recipe-container");
 const appKey = "55aba1e8a782e8fc409adb387c9c82ae";
 const appId = "1f3b28dd";
 
-const fakeAPIData = 
+const fakeAPIData =
 {
     "q": "cheese",
     "from": 0,
@@ -133,17 +133,22 @@ const fakeAPIData =
 // };
 
 const printToHTML = (data) => {
-  recipeContainer.innerHTML = "";
-//   for (let i = 0; i < 3; i++) {
+    recipeContainer.innerHTML = "";
+    //   for (let i = 0; i < 3; i++) {
     recipeContainer.innerHTML += `
-  <section class="recipe-card">
-  <h2>Recipe: ${data.hits[0].recipe.label}</h2>
-  <p>Cooking time: ${data.hits[0].recipe.totalTime} minutes</p>
-  <img class="recipe-image" src="${data.hits[0].recipe.image}"/>
-  <p>Source: <a href="${data.hits[0].recipe.url}">${data.hits[0].recipe.source}</a></p>
-  </section>
-  `;
-//   }
+    <section class="recipe-card">
+        <img class="recipe-image" src="${data.hits[0].recipe.image}"/>
+        <div class="card-middle">
+            <h2>${data.hits[0].recipe.label}</h2>
+            <p>Get the full recipe at <a href="${data.hits[0].recipe.url}">${data.hits[0].recipe.source}</a></p>
+        </div>
+        <div class="card-bottom">
+            <span>${data.hits[0].recipe.totalTime} min · </span>
+            <span>${Math.round(data.hits[0].recipe.calories)} kcal</span>
+        </div>
+    </section>
+    `;
+    //   }
 };
 
 // getRecipe("cheese")
