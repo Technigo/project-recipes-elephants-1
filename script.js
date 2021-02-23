@@ -3,6 +3,10 @@ const recipeContainer = document.querySelector("#recipe-container");
 const appKey = "55aba1e8a782e8fc409adb387c9c82ae";
 const appId = "1f3b28dd";
 
+const inputForm = document.getElementById("input-form")
+const ingredientInput = document.getElementById("ingredient-input")
+const checkboxInput = document.querySelectorAll(".checkbox-input")
+
 const fakeAPIData =
 {
     "q": "cheese",
@@ -122,9 +126,9 @@ const fakeAPIData =
     ]
 }
 
-const getRecipe = (ingredient, range) => {
+const getRecipe = (ingredient, range, excludeIngredients) => {
   fetch(
-    `https://api.edamam.com/search?q=${ingredient}&app_id=${appId}&app_key=${appKey}&from=0&to=3&calories=591-722&health=alcohol-free&time=${range}`
+    `https://api.edamam.com/search?q=${ingredient}&app_id=${appId}&app_key=${appKey}&from=0&to=3&calories=591-722&health=alcohol-free&time=${range}${excludeIngredients}`
   )
     .then((res) => res.json())
     .then((data) => {
@@ -179,13 +183,18 @@ timeFilter.addEventListener("change", () => {
 
 filterTime(fakeAPIData)
 
-const inputForm = document.getElementById("input-form")
-const ingredientInput = document.getElementById("ingredient-input")
 const handleInputForm = () => {
   event.preventDefault()
   const input = ingredientInput.value
   ingredientInput.value = ""
   console.log(input)
-  getRecipe(input, maxCookingTime)
+  getRecipe(input, maxCookingTime, excludeIngredients)
+}
+for (let checkbox of checkboxInput) {
+checkbox.addEventListener('change', function() {    
+      excludeIngredients += `&excluded=${checkbox.value}`
+  });
 }
 inputForm.addEventListener("submit", handleInputForm)
+
+let excludeIngredients = ""
