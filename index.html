@@ -12,59 +12,62 @@
 <body>
   <section id="input-container" class="input-container">
     <form id="input-form">
-      <div class="search-field"><img class="search-icon" src="./assets/search.svg" alt=""><input id="ingredient-input"
-          type="text" placeholder="Search" /></div>
-
-        <button id="filter-button" class="filter-button">Advanced search</button>
-        <section id="filter-content" class="filter-content accordion-selected">
-      <select id="filter" class="filter">
-        <option value="" disabled selected>Max cooking time</option>
-        <option value="30">less than 30 min</option>
-        <option value="60">less than 60 min</option>
-        <option value="120">less than 120 min</option>
-        <option value="any">any</option>
-      </select>
+      <div class="search-field">
+        <img class="search-icon" src="./assets/search.svg" alt="">
+        <input id="ingredient-input" type="text" placeholder="Search"/>
+      </div>
+      <div id="filter-button" class="filter-button">Advanced search</div>
+      <section id="filter-content" class="filter-content accordion-selected">
+        <select id="filter" class="filter">
+          <option value="" disabled selected>Max cooking time</option>
+          <option value="30">less than 30 min</option>
+          <option value="60">less than 60 min</option>
+          <option value="120">less than 120 min</option>
+          <option value="any">any</option>
+        </select>
+        <label>
+          Max number of ingredients
+          <input id="max-ingredients-filter" class="max-ingredients-filter" type="number">
+        </label>
+        <div id="checkbox" class=checkbox>
+          <p>Exclude ingredients</p>
+          <label>
+            <input class="checkbox-input" type="checkbox" value="chicken" name="chicken">
+            Chicken
+          </label>
+          <label>
+            <input class="checkbox-input" type="checkbox" value="pork" name="pork">
+            Pork
+          </label>
+          <label>
+            <input class="checkbox-input" type="checkbox" value="beef" name="beef">
+            Beef
+          </label>
+          <label>
+            <input class="checkbox-input" type="checkbox" value="fish" name="fish">
+            Fish
+          </label>
+          <label>
+            <input class="checkbox-input" type="checkbox" value="milk" name="milk">
+            Milk
+          </label>
+          <label>
+            <input class="checkbox-input" type="checkbox" value="cheese" name="cheese">
+            Cheese
+          </label>
+          <label>
+            <input class="checkbox-input" type="checkbox" value="nuts" name="nuts">
+            Nuts
+          </label>
+        </div>
+      </section>
+      <button class="send-button" type="submit">Get Recipe</button>
     </form>
-    
-    <div id="checkbox" class=checkbox>
-      <p>Exclude ingredients</p>
-      <label>
-        <input class="checkbox-input" type="checkbox" value="chicken" name="chicken">
-        Chicken
-      </label>
-      <label>
-        <input class="checkbox-input" type="checkbox" value="pork" name="pork">
-        Pork
-      </label>
-      <label>
-        <input class="checkbox-input" type="checkbox" value="beef" name="beef">
-        Beef
-      </label>
-      <label>
-        <input class="checkbox-input" type="checkbox" value="fish" name="fish">
-        Fish
-      </label>
-      <label>
-        <input class="checkbox-input" type="checkbox" value="milk" name="milk">
-        Milk
-      </label>
-      <label>
-        <input class="checkbox-input" type="checkbox" value="cheese" name="cheese">
-        Cheese
-      </label>
-      <label>
-        <input class="checkbox-input" type="checkbox" value="nuts" name="nuts">
-        Nuts
-      </label>
-    </div>
   </section>
-</section>
-<button class="send-button" type="submit">Get Recipe</button>
   <section id="header-container" class="header-container">
     <h1>Fantastic recipes</h1>
   </section>
   <section id="recipe-container" class="recipe-container">
-
   </section>
   <script src="script.js"></script>
 </body>
