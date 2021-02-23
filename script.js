@@ -6,6 +6,7 @@ const appId = "1f3b28dd";
 const inputForm = document.getElementById("input-form")
 const ingredientInput = document.getElementById("ingredient-input")
 const checkboxInput = document.querySelectorAll(".checkbox-input")
+const maxIngredientsFilter = document.querySelector("#max-ingredients-filter")
 
 const fakeAPIData =
 {
@@ -126,14 +127,14 @@ const fakeAPIData =
     ]
 }
 
-const getRecipe = (ingredient, range, excludeIngredients) => {
-  fetch(
-    `https://api.edamam.com/search?q=${ingredient}&app_id=${appId}&app_key=${appKey}&from=0&to=3&calories=591-722&health=alcohol-free&time=${range}${excludeIngredients}`
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      printToHTML(data);
-    });
+const getRecipe = (ingredient, range, maxIngredients, excludeIngredients) => {
+    fetch(
+        `https://api.edamam.com/search?q=${ingredient}&app_id=${appId}&app_key=${appKey}&from=0&to=3&calories=591-722&health=alcohol-free&time=${range}&ingr=${maxIngredients}${excludeIngredients}`
+    )
+        .then((res) => res.json())
+        .then((data) => {
+            printToHTML(data);
+        });
 };
 
 const printToHTML = (data) => {
@@ -184,17 +185,24 @@ timeFilter.addEventListener("change", () => {
 filterTime(fakeAPIData)
 
 const handleInputForm = () => {
-  event.preventDefault()
-  const input = ingredientInput.value
-  ingredientInput.value = ""
-  console.log(input)
-  getRecipe(input, maxCookingTime, excludeIngredients)
+    event.preventDefault()
+    const input = ingredientInput.value
+    ingredientInput.value = ""
+    console.log(input)
+    getRecipe(input, maxCookingTime, maxIngredients, excludeIngredients)
 }
+
 for (let checkbox of checkboxInput) {
-checkbox.addEventListener('change', function() {    
-      excludeIngredients += `&excluded=${checkbox.value}`
-  });
+    checkbox.addEventListener('change', function () {
+        excludeIngredients += `&excluded=${checkbox.value}`
+    });
 }
 inputForm.addEventListener("submit", handleInputForm)
 
 let excludeIngredients = ""
+
+let maxIngredients
+
+maxIngredientsFilter.addEventListener("change", () => {
+    maxIngredients = maxIngredientsFilter.value
+})
