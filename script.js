@@ -123,19 +123,19 @@ const fakeAPIData =
 }
 
 const getRecipe = (ingredient, range) => {
-  fetch(
-    `https://api.edamam.com/search?q=${ingredient}&app_id=${appId}&app_key=${appKey}&from=0&to=3&calories=591-722&health=alcohol-free&time=${range}`
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      printToHTML(data);
-    });
+    fetch(
+        `https://api.edamam.com/search?q=${ingredient}&app_id=${appId}&app_key=${appKey}&from=0&to=3&calories=591-722&health=alcohol-free&time=${range}`
+    )
+        .then((res) => res.json())
+        .then((data) => {
+            printToHTML(data);
+        });
 };
 
 const printToHTML = (data) => {
     recipeContainer.innerHTML = "";
-      for (let i = 0; i < 3; i++) {
-    recipeContainer.innerHTML += `
+    for (let i = 0; i < 3; i++) {
+        recipeContainer.innerHTML += `
     <section class="recipe-card">
         <img class="recipe-image" src="${data.hits[i].recipe.image}"/>
         <div class="card-middle">
@@ -148,7 +148,7 @@ const printToHTML = (data) => {
         </div>
     </section>
     `;
-      }
+    }
 };
 
 // getRecipe("cheese")
@@ -156,19 +156,19 @@ const printToHTML = (data) => {
 let maxCookingTime
 
 const filterTime = (userInput) => {
-  
-  if (userInput === "30") {
-    maxCookingTime = "0-30"
-  }
+
+    if (userInput === "30") {
+        maxCookingTime = "0-30"
+    }
     //   let filteredRecipes = data.hits.filter((item) => item[data.hits[0].recipe.totalTime] < 100 )
     //   console.log(filteredRecipes)
- else if (userInput === "60") {
-    maxCookingTime = "0-60"
-  } else if (userInput === "120") {
-    maxCookingTime = "0-120"
-  } else {
-    maxCookingTime = "1%2B"
-  }
+    else if (userInput === "60") {
+        maxCookingTime = "0-60"
+    } else if (userInput === "120") {
+        maxCookingTime = "0-120"
+    } else {
+        maxCookingTime = "1%2B"
+    }
 }
 
 const timeFilter = document.querySelector("#filter")
@@ -182,10 +182,10 @@ filterTime(fakeAPIData)
 const inputForm = document.getElementById("input-form")
 const ingredientInput = document.getElementById("ingredient-input")
 const handleInputForm = () => {
-  event.preventDefault()
-  const input = ingredientInput.value
-  ingredientInput.value = ""
-  console.log(input)
-  getRecipe(input, maxCookingTime)
+    event.preventDefault()
+    const input = ingredientInput.value
+    ingredientInput.value = ""
+    console.log(input)
+    getRecipe(input, maxCookingTime)
 }
 inputForm.addEventListener("submit", handleInputForm)
