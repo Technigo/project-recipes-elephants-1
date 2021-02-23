@@ -138,8 +138,8 @@ const getRecipe = (ingredient, range, excludeIngredients) => {
 
 const printToHTML = (data) => {
     recipeContainer.innerHTML = "";
-      for (let i = 0; i < 3; i++) {
-    recipeContainer.innerHTML += `
+    for (let i = 0; i < 3; i++) {
+        recipeContainer.innerHTML += `
     <section class="recipe-card">
         <img class="recipe-image" src="${data.hits[i].recipe.image}"/>
         <div class="card-middle">
@@ -152,7 +152,7 @@ const printToHTML = (data) => {
         </div>
     </section>
     `;
-      }
+    }
 };
 
 // getRecipe("cheese")
@@ -160,19 +160,19 @@ const printToHTML = (data) => {
 let maxCookingTime
 
 const filterTime = (userInput) => {
-  
-  if (userInput === "30") {
-    maxCookingTime = "0-30"
-  }
+
+    if (userInput === "30") {
+        maxCookingTime = "0-30"
+    }
     //   let filteredRecipes = data.hits.filter((item) => item[data.hits[0].recipe.totalTime] < 100 )
     //   console.log(filteredRecipes)
- else if (userInput === "60") {
-    maxCookingTime = "0-60"
-  } else if (userInput === "120") {
-    maxCookingTime = "0-120"
-  } else {
-    maxCookingTime = "1%2B"
-  }
+    else if (userInput === "60") {
+        maxCookingTime = "0-60"
+    } else if (userInput === "120") {
+        maxCookingTime = "0-120"
+    } else {
+        maxCookingTime = "1%2B"
+    }
 }
 
 const timeFilter = document.querySelector("#filter")
